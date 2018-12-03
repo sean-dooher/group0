@@ -604,9 +604,9 @@ sub finish {
     close (RESULT);
 
     if ($verdict eq 'PASS') {
-	print STDOUT "pass $test\n";
+	print STDOUT "\x1B[32mpass $test\x1B[0m\n";
     } else {
-	print STDOUT "FAIL $test\n";
+	print STDOUT "\x1B[31mFAIL $test\x1B[0m\n";
     }
     print STDOUT "$_\n" foreach @messages;
 
