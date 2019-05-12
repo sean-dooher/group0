@@ -590,6 +590,10 @@ sub pass {
 }
 
 sub finish {
+    my $green_color = "\x1B[32m";
+    my $red_color = "\x1B[31m";
+    my $white_color = "\x1B[0m";
+
     my ($verdict, @messages) = @_;
 
     seek ($msg_file, 0, 0);
@@ -604,9 +608,9 @@ sub finish {
     close (RESULT);
 
     if ($verdict eq 'PASS') {
-	print STDOUT "\x1B[32mpass $test\x1B[0m\n";
+	print STDOUT $green_color, "pass $test\n", $white_color;
     } else {
-	print STDOUT "\x1B[31mFAIL $test\x1B[0m\n";
+	print STDOUT $red_color, "FAIL $test\n", $white_color;
     }
     print STDOUT "$_\n" foreach @messages;
 
